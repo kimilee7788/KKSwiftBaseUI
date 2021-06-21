@@ -1,0 +1,44 @@
+PODS:
+  - EFCMark (0.0.2)
+  - EFMarkdown (5.0.0):
+    - EFCMark (= 0.0.2)
+  - EmptyStateKit (1.1.0)
+  - KKSwiftBaseUI (0.1.0):
+    - KKSwiftLib (~> 0.3.3)
+  - KKSwiftLib (0.3.3):
+    - EFMarkdown
+    - EmptyStateKit
+    - KKSwiftLib/KM_Extension (= 0.3.3)
+    - SnapKit
+  - KKSwiftLib/KM_Extension (0.3.3):
+    - EFMarkdown
+    - EmptyStateKit
+    - SnapKit
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - KKSwiftBaseUI (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - EFCMark
+    - EFMarkdown
+    - EmptyStateKit
+    - KKSwiftLib
+    - SnapKit
+
+EXTERNAL SOURCES:
+  KKSwiftBaseUI:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EFCMark: 78fb32ed4107c8efc640ad9d20ac31cd44ce2046
+  EFMarkdown: 915ff03080b95efcc737650991397322d661f1d9
+  EmptyStateKit: dc41e9ce5c6089f67a49d063bce73ade9f2ba73f
+  KKSwiftBaseUI: 15e943475f037323710f2e189293901a8d419f0f
+  KKSwiftLib: f260586f0ed515dc7e4bc57bf4b7aa6c7d96bfa5
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: e41a0340add031617b6a2188bd20a52a2fea2e6c
+
+COCOAPODS: 1.10.1

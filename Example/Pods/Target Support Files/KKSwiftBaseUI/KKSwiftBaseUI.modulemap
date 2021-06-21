@@ -1,0 +1,6 @@
+framework module KKSwiftBaseUI {
+  umbrella header "KKSwiftBaseUI-umbrella.h"
+
+  export *
+  module * { export * }
+}
