@@ -43,7 +43,7 @@ open class KMCustomLayout: UICollectionViewLayout {
     //内容的宽度
     var maxRowWidth:CGFloat = 0
     
-    weak var delegate:(KMCustomLayoutDelegate)?
+    weak open var delegate:(KMCustomLayoutDelegate)?
     open  func columnMargin()->CGFloat{
         return self.delegate?.KM_customLayoutWithColumnMargin?(layout: self) ?? 1
     }

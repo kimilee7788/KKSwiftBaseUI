@@ -76,10 +76,15 @@ open class KMBaseViewController: UIViewController,KMNavBarDelegate{
             })
         }
     }
+    
+    // MARK: 是否添加返回手势
+    
     open func popGestureEnabled() -> Bool{
         return true
     }
     
+    // MARK: 设置状态栏style
+
     open override var preferredStatusBarStyle: UIStatusBarStyle{
         return .default
     }
@@ -114,7 +119,6 @@ open class KMBaseViewController: UIViewController,KMNavBarDelegate{
 
 extension KMlistViewController:EmptyStateDataSource{
     
-
     open func imageForState(_ state: CustomState, inEmptyState emptyState: EmptyState) -> UIImage? {
         switch state as! MainState {
         case .noInternet: return UIImage(named: "Empty Inbox _Outline")
@@ -149,6 +153,10 @@ extension KMlistViewController:EmptyStateDataSource{
 
 open class KMlistViewController: KMBaseViewController, UITableViewDataSource ,UITableViewDelegate{
     
+    open func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray?.count ?? 0
     }
@@ -157,12 +165,8 @@ open class KMlistViewController: KMBaseViewController, UITableViewDataSource ,UI
        return UITableViewCell.init()
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return
-//    }
-    
-    var dataArray:Array<Any>?
-    weak var tableView:UITableView?
+    open var dataArray:Array<Any>?
+    open weak var tableView:UITableView?
     
     open override func KM_loadViews() {
         super.KM_loadViews()
@@ -239,7 +243,7 @@ open class KMNavigationController: UINavigationController,UIGestureRecognizerDel
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    override init(rootViewController: UIViewController) {
+    public override init(rootViewController: UIViewController) {
         
         super.init(rootViewController: rootViewController)
         self.setNavigationBarHidden(true, animated: false)

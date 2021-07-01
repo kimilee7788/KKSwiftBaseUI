@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KKSwiftBaseUI'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A short description of KKSwiftBaseUI.'
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/kimilee123@hotmail.com/KKSwiftBaseUI'
+  s.homepage         = 'https://github.com/kimilee7788/KKSwiftBaseUI'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'kimilee123@hotmail.com' => '35053358+kimilee7788@users.noreply.github.com' }

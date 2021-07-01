@@ -20,7 +20,7 @@ open class KMView: UIView {
     public convenience init() {
         self.init(frame: CGRect.zero)
     }
-        
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.loadView()
@@ -47,7 +47,7 @@ public enum KMButtonEdgeInsetsStyle {
 }
 
 public extension UIButton {
-
+    
     func layoutButton(style: KMButtonEdgeInsetsStyle, imageTitleSpace: CGFloat) {
         //得到imageView和titleLabel的宽高
         let imageWidth = self.imageView?.frame.size.width
@@ -55,11 +55,11 @@ public extension UIButton {
         
         var labelWidth: CGFloat! = 0.0
         var labelHeight: CGFloat! = 0.0
-//        let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
-     
+        //        let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        
         labelWidth = self.titleLabel?.intrinsicContentSize.width
         labelHeight = self.titleLabel?.intrinsicContentSize.height
-  
+        
         
         //初始化imageEdgeInsets和labelEdgeInsets
         var imageEdgeInsets = UIEdgeInsets.zero
@@ -67,27 +67,27 @@ public extension UIButton {
         
         //根据style和space得到imageEdgeInsets和labelEdgeInsets的值
         switch style {
-            case .KMButtonTop:
-                //上 左 下 右
-                imageEdgeInsets = UIEdgeInsets(top: -labelHeight-imageTitleSpace/2, left: 0, bottom: 0, right: -labelWidth)
-                labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth!, bottom: -imageHeight!-imageTitleSpace/2, right: 0)
-                break;
-                
-            case .KMButtonLeft:
-                imageEdgeInsets = UIEdgeInsets(top: 0, left: -imageTitleSpace/2, bottom: 0, right: imageTitleSpace)
-                labelEdgeInsets = UIEdgeInsets(top: 0, left: imageTitleSpace/2, bottom: 0, right: -imageTitleSpace/2)
-                break;
-                
-            case .KMButtonBottom:
-                imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -labelHeight!-imageTitleSpace/2, right: -labelWidth)
-                labelEdgeInsets = UIEdgeInsets(top: -imageHeight!-imageTitleSpace/2, left: -imageWidth!, bottom: 0, right: 0)
-                break;
-                
-            case .KMButtonRight:
-                imageEdgeInsets = UIEdgeInsets(top: 0, left: labelWidth+imageTitleSpace/2, bottom: 0, right: -labelWidth-imageTitleSpace/2)
-                labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth!-imageTitleSpace/2, bottom: 0, right: imageWidth!+imageTitleSpace/2)
-                break;
-                
+        case .KMButtonTop:
+            //上 左 下 右
+            imageEdgeInsets = UIEdgeInsets(top: -labelHeight-imageTitleSpace/2, left: 0, bottom: 0, right: -labelWidth)
+            labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth!, bottom: -imageHeight!-imageTitleSpace/2, right: 0)
+            break;
+            
+        case .KMButtonLeft:
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: -imageTitleSpace/2, bottom: 0, right: imageTitleSpace)
+            labelEdgeInsets = UIEdgeInsets(top: 0, left: imageTitleSpace/2, bottom: 0, right: -imageTitleSpace/2)
+            break;
+            
+        case .KMButtonBottom:
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -labelHeight!-imageTitleSpace/2, right: -labelWidth)
+            labelEdgeInsets = UIEdgeInsets(top: -imageHeight!-imageTitleSpace/2, left: -imageWidth!, bottom: 0, right: 0)
+            break;
+            
+        case .KMButtonRight:
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: labelWidth+imageTitleSpace/2, bottom: 0, right: -labelWidth-imageTitleSpace/2)
+            labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth!-imageTitleSpace/2, bottom: 0, right: imageWidth!+imageTitleSpace/2)
+            break;
+            
         }
         
         self.titleEdgeInsets = labelEdgeInsets
@@ -103,7 +103,6 @@ public enum KMNavButtonType {
     case right //图片在右。标题在左
 }
 public class KMNavButton: KMControl{
-
     
     var navButtonSelected:Bool = false{
         didSet{
@@ -190,7 +189,7 @@ public class KMNavButton: KMControl{
                     make.left.equalTo(navButtonImageView.snp.right).offset(imageTitleSpace)
                 }
             }else{
-               navButtonImageView.snp.remakeConstraints { (make) in
+                navButtonImageView.snp.remakeConstraints { (make) in
                     if imageSize != nil{
                         make.size.equalTo(imageSize!)
                         make.left.equalToSuperview()
@@ -280,7 +279,7 @@ public class KMNavButton: KMControl{
             self.navButtonContentView.addSubview(v)
             self.navButtonLabel = v
         }
-//        nameLB.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        //        nameLB.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     override func layoutView() {
         
@@ -304,7 +303,7 @@ open class KMControl: UIControl {
     }
     func layoutView() {
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.loadViews()
@@ -314,7 +313,7 @@ open class KMControl: UIControl {
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
+    
 }
 
 open class KMCollectionView: UICollectionView {
@@ -330,24 +329,30 @@ open class KMCollectionView: UICollectionView {
         }
         
     }
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    
+    override public init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         
         super.init(frame: frame, collectionViewLayout: layout)
         
         self.KM_loadViews()
         self.KM_layoutConstraints()
     }
+    
     func KM_loadViews(){
         interfaceStyle = .light
     }
+    
     func KM_layoutConstraints(){}
+    
     required public init?(coder: NSCoder) {
         
         super.init(coder: coder)
     }
+    
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return self.isShouldRecognize
     }
+    
 }
 
 open class KMCollectionViewCell: UICollectionViewCell {
@@ -362,7 +367,7 @@ open class KMCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.KM_loadViews()
@@ -372,10 +377,12 @@ open class KMCollectionViewCell: UICollectionViewCell {
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func KM_loadViews(){
+    open func KM_loadViews(){
         interfaceStyle = .light
     }
-    func KM_layoutConstraints(){}
+    open func KM_layoutConstraints(){
+        
+    }
 }
 
 open class KMTableViewCell: UITableViewCell {
@@ -416,25 +423,25 @@ public enum KMBarButtonType {
 
 open class KMBarModel{
     
-   convenience init(title:String,image:String) {
+    convenience init(title:String,image:String) {
         self.init()
         self.title = title
         self.image = image
     }
-
+    
     open var  title:String?
     open var image:String?
     open var color:UIColor = UIColor.red
     open var isWhite = false
     open var isShowBorder = false
-
+    
     open var w = 40
     
     open var type:KMBarButtonType = .KMBarButtonType_Image
 }
 
- @objc protocol KMBarViewProtocol {
-  func clickBarButton(button:UIButton);
+@objc protocol KMBarViewProtocol {
+    func clickBarButton(button:UIButton);
 }
 
 open class KMBarView:KMView {
@@ -447,7 +454,7 @@ open class KMBarView:KMView {
     var barHeight:CGFloat = 85.0
     var barData:Array<KMBarModel> = []
     var coustomView:KMView?
-
+    
     override open func loadView() {
         super.loadView()
         do{
@@ -486,7 +493,7 @@ open class KMBarView:KMView {
         
         guard barData.count <= 0 else {
             let w = SCREENWIDTH/CGFloat(barData.count)
-        
+            
             for index in 0 ..< barData.count{
                 let x = CGFloat(index)
                 let item = barData[index]
@@ -523,7 +530,7 @@ open class KMBarView:KMView {
                     }else{
                         make.height.equalTo(self.snp.height)
                     }
-//                    make.size.equalTo(CGSize.init(width: w, height: self.barHeight))
+                    //                    make.size.equalTo(CGSize.init(width: w, height: self.barHeight))
                     make.left.equalTo(w*x)
                 }
             }
